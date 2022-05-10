@@ -26,11 +26,11 @@ export default class CadastroServico extends React.Component{
         ev.preventDefault();
 
         const body = {
-            titulo: this.state.titulo,
-            descricao: this.state.descricao,
-            preco: Number(this.state.preco),
-            prazo: this.state.prazo,
-            metodosPagamento: this.state.metodosPagamento,
+            title: this.state.titulo,
+            description: this.state.descricao,
+            price: Number(this.state.preco),
+            dueData: this.state.prazo,
+            paymentMethods: this.state.metodosPagamento,
         };
         axios.post(`${url}/jobs`, body, headers)
             .then(() => {
@@ -44,7 +44,7 @@ export default class CadastroServico extends React.Component{
                 });
             })
             .catch((err) => {
-                alert(err.res.data);
+                alert(err.response.data.message);
             });
     };
 
