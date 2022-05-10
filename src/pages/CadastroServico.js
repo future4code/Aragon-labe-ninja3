@@ -8,7 +8,7 @@ export default class CadastroServico extends React.Component{
     state = {
         titulo: "",
         descricao: "",
-        preco: 0,
+        preco: "",
         prazo: "",
         metodosPagamento: []
     };
@@ -29,16 +29,16 @@ export default class CadastroServico extends React.Component{
             title: this.state.titulo,
             description: this.state.descricao,
             price: Number(this.state.preco),
-            dueData: this.state.prazo,
+            dueDate: this.state.prazo,
             paymentMethods: this.state.metodosPagamento,
         };
-        axios.post(`${url}/jobs`, body, headers)
+        axios.post(`${url}jobs`, body, headers)
             .then(() => {
-                alert(`O serviço ${this.state.title} foi criado com sucesso!`);
+                alert(`O serviço "${this.state.titulo}" foi criado com sucesso!`);
                 this.setState({
-                    titutlo: "",
+                    titulo: "",
                     descricao: "",
-                    preco: 0,
+                    preco: "",
                     prazo: "",
                     metodosPagamento: []
                 });

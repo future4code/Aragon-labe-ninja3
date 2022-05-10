@@ -20,8 +20,13 @@ export default class ListaServicos extends React.Component {
         this.setState({[ev.target.name]: ev.target.value})
     }
 
+    handleOrder = (e) => {
+        this.setState({ordenacao: e.target.value})
+    }
+
     componentDidMount() {
         this.pegarJobs()
+        this.filtrarJobs()
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -54,11 +59,12 @@ export default class ListaServicos extends React.Component {
         ? Number(this.state.valorMinimo)
         : -Infinity
 
+
         const listaFiltrada = this.state.listaDeJobs
         .filter((job)=> job.price >= minimo)
         .filter((job)=> job.price <= maximo)
         .filter((job)=>{
-            const tituloJob = job.title.toUpperCase()
+            const tituloJob = job.title.toLowerCase()
             const descricaoJob = job.description.toLowerCase()
             const pesquisa = this.state.titulo.toLowerCase()
 
@@ -71,9 +77,10 @@ export default class ListaServicos extends React.Component {
                 case "Maior valor":
                     return b.price - a.price 
                 case "Título":
-                    return 
+                    return a.title.localeCompare(b.title)
                 case "Prazo":
-                    return 
+                    return a.dueDate.localeCompare(b.dueDate)
+                
             }
         })
         this.setState({listaDeJobsFiltradas: listaFiltrada })
@@ -81,12 +88,18 @@ export default class ListaServicos extends React.Component {
 
     render() {
         console.log(this.state.listaDeJobsFiltradas)
-        const jobs = this.state.listaDeJobsFiltradas.map((job) => {
-            return <JobCard
+
+        const jobsMapeados =
+        this.state.listaDeJobs &&
+        this.state.listaDeJobs.map((job) => {
+            return (
+                <JobCard
                 key={job.id}
                 job={job}
-            />
-        })
+                />
+            );
+        });
+    
         return (
             <div>
                 <div>
@@ -111,18 +124,18 @@ export default class ListaServicos extends React.Component {
 
                     <label>
                         <input
-                        placeholder="Nome ou título"
+                        placeholder="Nome ou descrição"
                         name="titulo"
                         value={this.state.titulo}
                         onChange={this.onChangeInputs} />
                     </label>
 
-                    <select value={this.state.ordenacao} name="ordenacao" onChange={this.onChangeInputs}>
+                    <select name="ordenacao" onChange={this.handleOrder}>
                         <option>Sem Ordenação</option>
-                        <option>Menor Valor</option>
-                        <option>Maior Valor</option>
-                        <option>Título</option>
-                        <option>Prazo</option>
+                        <option value="Menor Valor">Menor Valor</option>
+                        <option value="Maior valor">Maior Valor</option>
+                        <option value="Título">Título</option>
+                        <option value="Prazo">Prazo</option>
                     </select>
 
                     
@@ -131,7 +144,7 @@ export default class ListaServicos extends React.Component {
                 <hr />
                 <div>
                     <h2>Lista de Jobs</h2>
-                    {jobs}
+                    {jobsMapeados}
                 </div>
 
             </div>
