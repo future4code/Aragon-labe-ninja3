@@ -9,7 +9,7 @@ export default class CadastroServico extends React.Component{
         titulo: "",
         descricao: "",
         preco: 0,
-        prazo: "",
+        data: "",
         metodosPagamento: []
     };
 
@@ -26,25 +26,25 @@ export default class CadastroServico extends React.Component{
         ev.preventDefault();
 
         const body = {
-            titulo: this.state.titulo,
-            descricao: this.state.descricao,
-            preco: Number(this.state.preco),
-            prazo: this.state.prazo,
-            metodosPagamento: this.state.metodosPagamento,
+            title: this.state.titulo,
+            description: this.state.descricao,
+            price: Number(this.state.preco),
+            dueData: this.state.data,
+            paymentMethods: this.state.metodosPagamento,
         };
         axios.post(`${url}/jobs`, body, headers)
             .then(() => {
-                alert(`O serviço ${this.state.title} foi criado com sucesso!`);
+                alert(`O serviço ${this.state.titulo} foi criado com sucesso!`);
                 this.setState({
-                    titutlo: "",
+                    titulo: "",
                     descricao: "",
                     preco: 0,
-                    prazo: "",
+                    data: "",
                     metodosPagamento: []
                 });
             })
             .catch((err) => {
-                alert(err.res.data);
+                alert(err.response.data.message);
             });
     };
 
@@ -82,16 +82,16 @@ export default class CadastroServico extends React.Component{
                             <option value={"credito"}>Cartão de Crédito</option>
                             <option value={"debito"}>Cartão de Débito</option>
                             <option value={"paypal"}>PayPal</option>
-                            <option value={"boleto"}>Boleto</option>
+                            <option value={"debito"}>Boleto</option>
                             <option value={"pix"}>Pix</option>
                         </select>
                     </section>
-                    <label htmlFor={'date'}>Prazo: </label>
+                    <label htmlFor={'date'}>Data: </label>
                     <input
-                        id={'prazo'}
+                        id={'data'}
                         type={"date"}
-                        name={"prazo"}
-                        value={this.state.prazo}
+                        name={"data"}
+                        value={this.state.data}
                         onChange={this.handleInputValues}
                     />
                     <br />
