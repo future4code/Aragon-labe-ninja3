@@ -14,7 +14,7 @@
 
 ## Link Surge:
 
-- https://coelho-ninja-dia2.surge.sh/
+- https://bunninjas-dia3.surge.sh/
 
  # Funcionalidades do Projeto
 
