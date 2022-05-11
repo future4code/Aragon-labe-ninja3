@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios"
-import JobCard from "../components/JobCard";
+import ItemCarrinho from "../components/ItemCarrinho";
 
 
 export default class Carrinho extends React.Component {
     render() {
 
         const listaCarrinho = this.props.carrinho.map((job) => {
-            return <JobCard
+            return <ItemCarrinho
                 key={job.id}
                 title={job.title}
                 price={job.price}
+                id={job.id}
+                removerDoCarrinho={this.props.removerDoCarrinho}
             />
         })
 
@@ -34,6 +36,7 @@ export default class Carrinho extends React.Component {
                         <hr />
 
                         <h2>Carrinho</h2>
+                        {listaCarrinho}
 
 
                     </div>
