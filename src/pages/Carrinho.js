@@ -3,6 +3,22 @@ import styled from "styled-components";
 import axios from "axios"
 import ItemCarrinho from "../components/ItemCarrinho";
 
+const Botao = styled.button`
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    padding: 10px 30px;
+    font-size: 15px;
+    border: 1px solid #00baff;
+    background: white;
+
+    &:hover{
+        border-bottom: 3px solid #00baff;
+        background-color:#00baff;
+        color: white;
+    }
+
+`
+
 
 export default class Carrinho extends React.Component {
     render() {
@@ -28,10 +44,10 @@ export default class Carrinho extends React.Component {
                 {listaCarrinho.length > 0 ? (
                     <div>
                         <h2>Dados da compra</h2>
-                        <p>Preço total:R${valorTotal},00</p>
+                        <p>Preço total: R$ {valorTotal.toFixed(2)}</p>
 
-                        <button onClick={() => this.props.trocaPagina("lista")}>Voltar para lista de jobs</button>
-                        <button onClick={()=> this.props.finalizaCompras()}>Finalizar compra</button>
+                        <Botao onClick={() => this.props.trocaPagina("lista")}>Voltar para lista de jobs</Botao>
+                        <Botao onClick={()=> this.props.finalizaCompras()}>Finalizar compra</Botao>
 
                         <hr />
 

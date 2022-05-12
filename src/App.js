@@ -8,6 +8,11 @@ import DetalhesServicos from "./pages/DetalhesServicos";
 import ListaServicos from "./pages/ListaServicos";
 import CadastroServico from "./pages/CadastroServico";
 
+const ContainerGeral = styled.div`
+  text-align: center;
+  font-family:'Roboto', sans-serif;
+`
+
 export default class App extends React.Component {
   state = {
     paginaAtual: "inicial",
@@ -83,14 +88,14 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <ContainerGeral>
         <Header
           trocaPagina={this.trocaPagina}
         />
 
         {this.renderizaPaginaAtual()}
 
-      </div>
+      </ContainerGeral>
     );
   }
 }

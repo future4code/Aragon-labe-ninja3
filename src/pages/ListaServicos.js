@@ -23,9 +23,21 @@ export default class ListaServicos extends React.Component {
         this.setState({ ordenacao: e.target.value })
     }
 
+    handleMin = (e) => {
+        this.setState({ valorMinimo: e.target.value })
+    }
+
+    handleMax = (e) => {
+        this.setState({ valorMaximo: e.target.value })
+    }
+
+    handleTitulo = (e) => {
+        this.setState({ titulo: e.target.value })
+    }
+
     componentDidMount() {
         this.pegarJobs()
-        /* this.filtrarJobs() */
+        this.filtrarJobs()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -106,7 +118,7 @@ export default class ListaServicos extends React.Component {
 
 
     render() {
-        console.log(this.state.listaDeJobsFiltradas)
+
 
         const jobsMapeados =
             this.state.listaDeJobs &&
@@ -132,16 +144,17 @@ export default class ListaServicos extends React.Component {
                             placeholder="Valor mínimo"
                             name="valorMinimo"
                             value={this.state.valorMinimo}
-                            onChange={this.onChangeInputs}
+                            onChange={this.handleMin}
                         />
                     </label>
 
                     <label>
                         <input
-                            placeholder="Valor maxímo"
+                            placeholder="Valor máximo"
                             name="valorMaximo"
                             value={this.state.valorMaximo}
-                            onChange={this.onChangeInputs} />
+                            onChange={this.handleMax}
+                        />
                     </label>
 
                     <label>
@@ -149,7 +162,7 @@ export default class ListaServicos extends React.Component {
                             placeholder="Nome ou descrição"
                             name="titulo"
                             value={this.state.titulo}
-                            onChange={this.onChangeInputs} />
+                            onChange={this.handleTitulo} />
                     </label>
 
                     <select name="ordenacao" onChange={this.handleOrder}>
