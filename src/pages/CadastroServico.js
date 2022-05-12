@@ -3,6 +3,47 @@ import styled from "styled-components";
 import axios from "axios";
 import { headers, url } from "../constants/urls";
 
+const CadastroContainer = styled.div `
+    
+
+`
+
+const Formulario = styled.form `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+`
+const Titulo = styled.h2`
+    margin-top: 20px;
+    margin-bottom: 0;
+`
+
+const Botao = styled.button`
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    padding: 10px 30px;
+    font-size: 15px;
+    border: 1px solid #00baff;
+    background: white;
+
+    &:hover{
+        border-bottom: 3px solid #00baff;
+        background-color:#00baff;
+        color: white;
+    }
+
+`
+const Input = styled.input `
+`
+const Label = styled.label `
+    margin: 10px;
+`
+
+const InputDescricao = styled.input `
+    width: 30vw;
+    height: 20vh;
+`
 
 export default class CadastroServico extends React.Component{
     state = {
@@ -50,28 +91,29 @@ export default class CadastroServico extends React.Component{
 
     render() {
         return (
-            <>
-                <h2>Cadastre um Novo Serviço</h2>
-                <form onSubmit={this.criarServico}>
-                    <label htmlFor={'titulo'}>Título: </label>
-                    <input
+            <CadastroContainer>
+                <Titulo>Cadastre um Novo Serviço</Titulo>
+                <Formulario onSubmit={this.criarServico}>
+                    <Label htmlFor={'titulo'}>Título: </Label>
+                    <Input
                         id={'titulo'}
                         name={"titulo"}
                         value={this.state.titulo}
                         onChange={this.handleInputValues}
                     />
-                    <label htmlFor={'descricao'}>Descrição: </label>
-                    <input
+                    <Label htmlFor={'descricao'}>Descrição: </Label>
+                    <InputDescricao
                         id={'descricao'}
                         name={"descricao"}
                         value={this.state.descricao}
                         onChange={this.handleInputValues}
                     />
-                    <label htmlFor={'preco'}>Preço: </label>
-                    <input
+                    <Label htmlFor={'preco'}> Preço:</Label>
+                    <Input
                         id={'preco'}
                         type="number"
                         name={"preco"}
+                        placeholder={"R$"}
                         value={this.state.preco}
                         onChange={this.handleInputValues}
                     />
@@ -79,15 +121,15 @@ export default class CadastroServico extends React.Component{
                         <h4>Formas de pagamento:</h4>
                         <select onChange={this.handleMetodosPagamentos}>
                             <option selected disabled>Selecione uma opção:</option>
-                            <option value={"credito"}>Cartão de Crédito</option>
-                            <option value={"debito"}>Cartão de Débito</option>
-                            <option value={"paypal"}>PayPal</option>
-                            <option value={"boleto"}>Boleto</option>
-                            <option value={"pix"}>Pix</option>
+                            <option value={"Crédito"}>Cartão de Crédito</option>
+                            <option value={"Débito"}>Cartão de Débito</option>
+                            <option value={"Paypal"}>PayPal</option>
+                            <option value={"Boleto"}>Boleto</option>
+                            <option value={"Pix"}>Pix</option>
                         </select>
                     </section>
-                    <label htmlFor={'date'}>Prazo: </label>
-                    <input
+                    <Label htmlFor={'date'}>Prazo: </Label>
+                    <Input
                         id={'prazo'}
                         type={"date"}
                         name={"prazo"}
@@ -95,9 +137,9 @@ export default class CadastroServico extends React.Component{
                         onChange={this.handleInputValues}
                     />
                     <br />
-                    <button type={"submit"}>Cadastrar Serviço</button>
-                </form>
-            </>
+                    <Botao type={"submit"}>Cadastrar Serviço</Botao>
+                </Formulario>
+            </CadastroContainer>
         );
     };
 };

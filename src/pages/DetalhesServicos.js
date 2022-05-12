@@ -40,10 +40,11 @@ export default class DetalhesServicos extends React.Component {
         })
 
         return (
+            
             <div>
                 <h1>{this.state.job.title}</h1>
                 <p>Preço: R${this.state.job.price},00</p>
-                <p>Prazo: {this.state.job.dueDate}</p>
+                {this.state.job.dueDate && <p>Prazo: {this.converterData(this.state.job.dueDate)}</p>}
                 <p>Descrição: {this.state.job.description}</p>
                 <p>Formas de pagamento:</p>
                 {formasPagamento}

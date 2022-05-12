@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import styled from "styled-components";
 import { headers, url } from "../constants/urls";
 
 const converterData = (date) => {
@@ -9,18 +10,39 @@ const converterData = (date) => {
     return `${day}/${month}/${year}`
 }
 
+const JobCardContainer = styled.div `
+    border: 1px solid black;
+    margin: 1% auto;
+    width: 70vw;
+    text-align: center;
+`
+const Botao = styled.button`
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    padding: 10px 30px;
+    font-size: 15px;
+    border: 1px solid #00baff;
+    background: white;
+
+    &:hover{
+        border-bottom: 3px solid #00baff;
+        background-color:#00baff;
+        color: white;
+    }
+
+`
 
 const JobCard = (props) => {
     return (
-        <div>
+        <JobCardContainer>
             <h4>{props.job.title}</h4>
             <p>Preço: R$ {props.job.price},00</p>
             <p>Prazo: {converterData(props.job.dueDate)}</p>
 
-            <button onClick={()=> props.irParaDetalhes(props.job.id)}>Detalhes</button>
-            <button onClick={() => props.deletarJob(props.job.id)}>Remover job</button>
-            <button onClick={() => props.adicionarAoCarrinho(props.job)}>Adicionar ao carrinho</button>
-        </div>
+            <Botao onClick={()=> props.irParaDetalhes(props.job.id)}>Detalhes</Botao>
+            <Botao onClick={() => props.deletarJob(props.job.id)}>Remover job</Botao>
+            <Botao onClick={() => props.adicionarAoCarrinho(props.job)}>Adicionar ao carrinho</Botao>
+        </JobCardContainer>
     )
 
 }
