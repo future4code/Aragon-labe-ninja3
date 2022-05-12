@@ -14,7 +14,7 @@
 
 ## Link Surge:
 
-- https://bunninjas-dia3.surge.sh/
+- https://bunninjas.surge.sh/
 
  # Funcionalidades do Projeto
 
