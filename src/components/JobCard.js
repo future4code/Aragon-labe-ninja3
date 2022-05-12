@@ -15,13 +15,55 @@ const JobCardContainer = styled.div `
     margin: 1% auto;
     width: 70vw;
     text-align: center;
+    border-radius: 5px;
+    transition: .3s ease-in-out;
+    &:hover{
+        background-color: #def4fc;
+    }
 `
-const Botao = styled.button`
+const Botao  = styled.button`
     cursor: pointer;
     transition: .3s ease-in-out;
     padding: 10px 30px;
     font-size: 15px;
     border: 1px solid #00baff;
+    background: white;
+    margin: 3px;
+    border-radius: 5px;
+
+    &:hover{
+        border-bottom: 3px solid #00baff;
+        background-color:#00baff;
+        color: white;
+    }
+
+`
+
+
+const Botao1 = styled.button`
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    padding: 10px 30px;
+    font-size: 15px;
+    border: 1px solid #00baff;
+    background: white;
+    margin: 3px;
+    border-radius:5px;
+
+    &:hover{
+        border-bottom: 3px solid #00baff;
+        background-color:#00baff;
+        color: white;
+    }
+
+    @media (max-width:800px) {       
+    
+  cursor: pointer;
+    transition: .3s ease-in-out;
+    padding: 10px 30px;
+    font-size: 15px;
+    border: 1px solid #00baff;
+    border-radius: 5px;
     background: white;
 
     &:hover{
@@ -30,6 +72,10 @@ const Botao = styled.button`
         color: white;
     }
 
+    width: 275px;
+    margin: 3px;
+    margin-bottom: 10px;
+}
 `
 
 const JobCard = (props) => {
@@ -41,7 +87,7 @@ const JobCard = (props) => {
 
             <Botao onClick={()=> props.irParaDetalhes(props.job.id)}>Detalhes</Botao>
             <Botao onClick={() => props.deletarJob(props.job.id)}>Remover job</Botao>
-            <Botao onClick={() => props.adicionarAoCarrinho(props.job)}>Adicionar ao carrinho</Botao>
+            <Botao1 onClick={() => props.adicionarAoCarrinho(props.job)}>Adicionar ao carrinho</Botao1>
         </JobCardContainer>
     )
 

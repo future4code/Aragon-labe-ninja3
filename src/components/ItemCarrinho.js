@@ -6,6 +6,10 @@ const ItemCarrinhoContainer = styled.div `
     margin: 1% auto;
     width: 70vw;
     text-align: center;
+    border-radius: 5px;
+    &:hover{
+        background-color: #def4fc;
+    }
 `
 
 const Botao = styled.button`
@@ -15,6 +19,8 @@ const Botao = styled.button`
     font-size: 15px;
     border: 1px solid #00baff;
     background: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
 
     &:hover{
         border-bottom: 3px solid #00baff;
