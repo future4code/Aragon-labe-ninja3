@@ -4,6 +4,10 @@ import axios from "axios"
 import { headers, url } from "../constants/urls";
 import JobCard from "../components/JobCard";
 
+const Inputs = styled.input`
+    border: 1px solid black;
+    margin: 2px;
+`
 
 export default class ListaServicos extends React.Component {
     state = {
@@ -140,7 +144,7 @@ export default class ListaServicos extends React.Component {
                     <h2>Busca por Jobs</h2>
 
                     <label>
-                        <input
+                        <Inputs
                             placeholder="Valor mínimo"
                             name="valorMinimo"
                             value={this.state.valorMinimo}
@@ -149,7 +153,7 @@ export default class ListaServicos extends React.Component {
                     </label>
 
                     <label>
-                        <input
+                        <Inputs
                             placeholder="Valor máximo"
                             name="valorMaximo"
                             value={this.state.valorMaximo}
@@ -158,7 +162,7 @@ export default class ListaServicos extends React.Component {
                     </label>
 
                     <label>
-                        <input
+                        <Inputs
                             placeholder="Nome ou descrição"
                             name="titulo"
                             value={this.state.titulo}
