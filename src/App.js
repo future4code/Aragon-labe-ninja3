@@ -8,6 +8,8 @@ import DetalhesServicos from "./pages/DetalhesServicos";
 import ListaServicos from "./pages/ListaServicos";
 import CadastroServico from "./pages/CadastroServico";
 
+/* Testando */
+
 export default class App extends React.Component {
   state = {
     paginaAtual: "inicial",
