@@ -41,7 +41,7 @@ export default class ListaServicos extends React.Component {
 
     componentDidMount() {
         this.pegarJobs()
-        this.filtrarJobs()
+        
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -49,6 +49,9 @@ export default class ListaServicos extends React.Component {
             this.state.valorMaximo !== prevState.valorMaximo ||
             this.state.titulo !== prevState.titulo ||
             this.state.ordenacao !== prevState.ordenacao) {
+            this.filtrarJobs()
+        }
+        if(this.state.listaDeJobs !== prevState.listaDeJobs){
             this.filtrarJobs()
         }
     }
@@ -84,19 +87,25 @@ export default class ListaServicos extends React.Component {
 
                 return tituloJob.includes(pesquisa) || descricaoJob.includes(pesquisa)
             })
-            .sort((a, b) => {
-                switch (this.state.ordenacao) {
-                    case "Menor valor":
-                        return a.price - b.price
-                    case "Maior valor":
-                        return b.price - a.price
-                    case "Título":
-                        return a.title.localeCompare(b.title)
-                    case "Prazo":
-                        return a.dueDate.localeCompare(b.dueDate)
-                }
-            })
-        this.setState({ listaDeJobs: listaFiltrada })
+
+            if(this.state.ordenacao !== ""){
+                listaFiltrada.sort((a, b) => {
+                    switch (this.state.ordenacao) {
+                        case "Menor valor":
+                            return a.price - b.price
+                        case "Maior valor":
+                            return b.price - a.price
+                        case "Título":
+                            return a.title.localeCompare(b.title)
+                            case "Prazo":
+                                return a.dueDate.localeCompare(b.dueDate)
+                            default:
+                                return a.price - b.price
+                        }
+                    })
+
+                }            
+        this.setState({ listaDeJobsFiltradas: listaFiltrada })
     }
 
     deletarJob = (idJob) => {
@@ -126,7 +135,7 @@ export default class ListaServicos extends React.Component {
 
         const jobsMapeados =
             this.state.listaDeJobs &&
-            this.state.listaDeJobs.map((job) => {
+            this.state.listaDeJobsFiltradas.map((job) => {
                 return (
                     <JobCard
                         deletarJob={this.deletarJob}

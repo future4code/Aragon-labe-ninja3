@@ -10,6 +10,8 @@ const Botao = styled.button`
     font-size: 15px;
     border: 1px solid #00baff;
     background: white;
+    border-radius: 5px;
+    margin: 10px;
 
     &:hover{
         border-bottom: 3px solid #00baff;

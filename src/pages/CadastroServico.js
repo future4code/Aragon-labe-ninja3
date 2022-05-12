@@ -26,11 +26,18 @@ const Botao = styled.button`
     font-size: 15px;
     border: 1px solid #00baff;
     background: white;
+    border-radius: 5px;
 
     &:hover{
         border-bottom: 3px solid #00baff;
         background-color:#00baff;
         color: white;
+    }
+
+    @media (max-width:800px) {
+        display: flex;
+        flex-direction: column;
+        width: 122px;
     }
 
 `
