@@ -9,6 +9,9 @@ const Botao = styled.button`
     font-size: 20px;
     border: 1px solid #00baff;
     background: white;
+    width: 70vw;
+    margin: 10px;
+    text-align: center;
 
     &:hover{
         border-bottom: 3px solid #00baff;

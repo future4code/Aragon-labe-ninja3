@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios"
-import PaginaInicial from "../pages/PaginaInicial";
 
 
 const ContainerHeader = styled.div`
     display:flex;
     justify-content: space-between; 
+
+    @media(max-width: 800px) {
+    flex-direction: column;
+    position: relative;   
+  }
 `
 const Logo = styled.div`
     display:flex;
