@@ -19,8 +19,7 @@
  # Funcionalidades do Projeto
 
 ## Finalizado:
-- Iniciado a criação das páginas do site;
-- Criado as rotas de transição entre páginas, exceto página de detalhes de serviço (Página4).
+- Projeto possui todas as funcionalidades requisitadas. 
 
-## Ainda não finalizado:
+
 
